@@ -7,7 +7,7 @@ import icommand.nxt.*;
 import icommand.nxt.comm.NXTCommand;
 public class Robot { 
 	//declare objects to represent sensors here
-	
+
 	public static void main (String[] args) {
 	
 		NXTCommand.open();
@@ -15,4 +15,15 @@ public class Robot {
 		//statements to control the robot
 		
 		NXTCommmand.close
-}}
+	}
+
+	public static void turnLeft(){
+
+		Motor.C.setSpeed(500);
+		Motor.C.forward(); // Makes the motor turn forward
+
+		Thread.sleep(2); //Waits for 2 seconds before continueing
+
+		Motor.C.stop(); //Ends motor rotation
+	}
+}
