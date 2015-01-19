@@ -5,6 +5,12 @@
 */
 import icommand.nxt.*;
 import icommand.nxt.comm.NXTCommand;
+
+public enum Direction {
+	LEFT,
+	RIGHT
+}
+
 public class Robot { 
 	//declare objects to represent sensors here
 
@@ -13,17 +19,32 @@ public class Robot {
 		NXTCommand.open();
 		NXTCommand.setVerify(true);
 		//statements to control the robot
-		
-		NXTCommmand.close
+
+		turn("left"); //check function works;;;;;;
+
+		NXTCommmand.close();
 	}
 
-	public static void turnLeft(){
+	public static void turn(String direction){
 
-		Motor.C.setSpeed(500);
-		Motor.C.forward(); // Makes the motor turn forward
+		switch (Direction.valueOf(direction.toUpperCase())){
+			case LEFT:
+				Motor.C.setSpeed(500);
+				Motor.C.forward(); // Makes the motor turn forward
 
-		Thread.sleep(2); //Waits for 2 seconds before continueing
+				Thread.sleep(2); //Waits for 2 seconds before continueing
 
-		Motor.C.stop(); //Ends motor rotation
+				Motor.C.stop(); //Ends motor rotation
+				break;
+
+			case RIGHT:
+				Motor.B.setSpeed(500);
+				Motor.B.forward(); // Makes the motor turn forward
+
+				Thread.sleep(2); //Waits for 2 seconds before continueing
+
+				Motor.B.stop(); //Ends motor rotation
+				break;
+		}
 	}
 }
